@@ -543,7 +543,7 @@
       <div class="token-pill ns" id="omi-tokens-ns">අපේ අය: 0</div>
       <div class="token-pill ew" id="omi-tokens-ew">එහා පැත්තේ අය: 0</div>
     </div>
-    <div class="trump-pill" id="omi-trump-pill">තුරුප්පු: —</div>
+    <div class="trump-pill" id="omi-trump-pill">තුරුම්පු: —</div>
   </div>
   <div class="trick-board">
     <div class="trick-count-pill ns" id="omi-tricks-ns">Round: 0</div>
@@ -583,7 +583,7 @@
 <!-- shared modal overlays -->
 <div class="modal-overlay hidden" id="omi-trump-overlay">
   <div class="modal-box" style="max-width:420px;">
-    <p id="omi-trump-title">පළවෙනි කාඩ් 4න් තුරුප්පු තෝරන්න:</p>
+      <p id="omi-trump-title">පළවෙනි කාඩ් 4න් තුරුම්පු තෝරන්න:</p>
     <div class="trump-hand" id="omi-trump-hand"></div>
     <div class="suit-row" id="omi-suit-row"></div>
   </div>
@@ -798,7 +798,7 @@ OmiGame.prototype.playHand = async function(){
   this.ui.renderHands(this.hands, this.trump, {localSeats:this.localSeats, onlyReveal:null});
   this.ui.setTrump(null);
   SFX.cardDeal();
-  this.log(`බෙදනවා… ${this.displayName(leader)} තුරුප්පු කියනවා.`);
+  this.log(`බෙදනවා… ${this.displayName(leader)} තුරුම්පු කියනවා.`);
   await sleep(450);
 
   // bidding
@@ -807,7 +807,7 @@ OmiGame.prototype.playHand = async function(){
   this.callingTeam = TEAM[leader];
   this.ui.setTrump(chosenSuit);
   SFX.trumpCall();
-  this.log(`${this.displayName(leader)} ${SUIT_NAME_LOCAL[chosenSuit]} ${SUIT_SYMBOL[chosenSuit]} තුරුප්පු ලෙස කියනවා.`);
+  this.log(`${this.displayName(leader)} ${SUIT_NAME_LOCAL[chosenSuit]} ${SUIT_SYMBOL[chosenSuit]} තුරුම්පු ලෙස කියනවා.`);
   await sleep(450);
 
   // second batch of 4
@@ -1044,7 +1044,7 @@ function buildOmiUI(){
     setTokenLabels(labels){ tokenLabels = labels; },
     setStatus(msg){ el('omi-status').textContent = msg; },
     setTrump(suit){
-      el('omi-trump-pill').textContent = suit ? `තුරුප්පු: ${SUIT_NAME_LOCAL[suit]} ${SUIT_SYMBOL[suit]}` : 'තුරුප්පු: —';
+      el('omi-trump-pill').textContent = suit ? `තුරුම්පු: ${SUIT_NAME_LOCAL[suit]} ${SUIT_SYMBOL[suit]}` : 'තුරුම්පු: —';
     },
     setTokens(tokens){
       el('omi-tokens-ns').textContent = `${tokenLabels.NS}: ${tokens.NS}`;
@@ -1117,7 +1117,7 @@ function buildOmiUI(){
     },
     pickTrump(nameStr, hand){
       return new Promise(resolve=>{
-        el('omi-trump-title').textContent = `${nameStr}: පළවෙනි කාඩ් 4න් තුරුප්පු තෝරන්න`;
+        el('omi-trump-title').textContent = `${nameStr}: පළවෙනි කාඩ් 4න් තුරුම්පු තෝරන්න`;
         const handDiv = el('omi-trump-hand');
         handDiv.innerHTML = '';
         for(const c of hand) handDiv.appendChild(makeCardEl(c, {}));
